@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+    stages {
+        stage('clone and clean repo') {
+            steps {
+                sh  "git clone https://github.com/prateekrocks77/DevOpsClassCodes.git"
+                  }
+        }
+                stage('Test') { 
+            steps {
+                sh "mvn test -f DevOpsClassCodes" 
+            }
+        }
+        stage('Deploy') { 
+            steps {
+                sh "mvn package -f DevOpsClassCodes" 
+            }
+        }
+
+    }
+    }
